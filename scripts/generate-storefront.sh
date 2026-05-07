@@ -6,4 +6,6 @@ cd generated
 
 echo "Cloning storefront..."
 
-git clone https://github.com/vendure-ecommerce/storefront-nextjs-starter storefront
+rm -rf storefront
+
+git -c credential.helper= clone https://github.com/vendure-ecommerce/storefront storefront
