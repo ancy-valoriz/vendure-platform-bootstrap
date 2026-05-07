@@ -6,6 +6,10 @@ BACKEND_REPO_URL="https://$GITHUB_TOKEN@github.com/$GITHUB_USERNAME/my-vendure-b
 
 STOREFRONT_REPO_URL="https://$GITHUB_TOKEN@github.com/$GITHUB_USERNAME/my-vendure-storefront.git"
 
+git config --global user.email "github-actions@github.com"
+
+git config --global user.name "github-actions"
+
 echo "Pushing backend..."
 
 cd generated/backend
@@ -22,11 +26,9 @@ git remote add origin $BACKEND_REPO_URL
 
 git push -u origin main --force
 
-cd ../../
+cd ../../generated/storefront
 
 echo "Pushing storefront..."
-
-cd generated/storefront
 
 git init
 
