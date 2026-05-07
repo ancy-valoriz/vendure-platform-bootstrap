@@ -8,4 +8,4 @@ cd generated
 
 echo "Generating Vendure backend..."
 
-npx @vendure/create@latest backend --quickstart --package-manager npm
+printf "1\nn\n" | npx @vendure/create@3.6.3 backend
