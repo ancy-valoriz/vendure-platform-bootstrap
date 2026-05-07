@@ -2,22 +2,16 @@
 
 set -e
 
-echo "Logging into Railway..."
-
-railway login --token $RAILWAY_TOKEN
-
-echo "Creating Railway project..."
-
-railway init
+export RAILWAY_TOKEN=$RAILWAY_TOKEN
 
 echo "Deploying backend..."
 
 cd generated/backend
 
-railway up
-
-cd ../storefront
+railway up --service backend
 
 echo "Deploying storefront..."
 
-railway up
+cd ../storefront
+
+railway up --service storefront
