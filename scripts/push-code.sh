@@ -20,7 +20,9 @@ git branch -M main
 
 git add .
 
-git commit -m "Initial backend"
+git commit -m "Initial backend" || true
+
+git remote remove origin || true
 
 git remote add origin $BACKEND_REPO_URL
 
@@ -36,7 +38,7 @@ git branch -M main
 
 git add .
 
-git commit -m "Initial storefront"
+git commit -m "Initial storefront" || true
 
 git remote remove origin || true
 
