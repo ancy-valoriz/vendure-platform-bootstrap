@@ -38,6 +38,8 @@ git add .
 
 git commit -m "Initial storefront"
 
+git remote remove origin || true
+
 git remote add origin $STOREFRONT_REPO_URL
 
 git push -u origin main --force

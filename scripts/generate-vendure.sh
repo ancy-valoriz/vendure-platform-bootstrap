@@ -6,9 +6,8 @@ mkdir -p generated
 
 cd generated
 
-echo "Generating Vendure backend..."
+echo "Cloning Vendure backend starter..."
 
-npx @vendure/create@3.6.3 backend <<EOF
-1
-n
-EOF
+rm -rf backend
+
+git -c credential.helper= clone https://github.com/vendure-ecommerce/real-world-vendure backend
