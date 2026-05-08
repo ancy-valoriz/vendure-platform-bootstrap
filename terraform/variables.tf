@@ -1,2 +1,3 @@
 variable "railway_token" {}
-variable "project_name" {}
+
+variable "railway_project_id" {}
