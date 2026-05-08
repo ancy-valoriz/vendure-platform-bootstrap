@@ -2,9 +2,7 @@
 
 set -e
 
-echo "Checking Railway auth..."
-
-echo $RAILWAY_TOKEN | railway login --token
+export RAILWAY_TOKEN=$RAILWAY_TOKEN
 
 PROJECT_ID="637e48f7-b697-4fa3-84ec-fc3d89e5ddda"
 
@@ -14,7 +12,7 @@ cd generated/backend
 
 railway link --project $PROJECT_ID --service vendure-backend
 
-railway up
+railway up --detach
 
 echo "Deploying storefront..."
 
@@ -22,4 +20,4 @@ cd ../storefront
 
 railway link --project $PROJECT_ID --service vendure-storefront
 
-railway up
+railway up --detach
