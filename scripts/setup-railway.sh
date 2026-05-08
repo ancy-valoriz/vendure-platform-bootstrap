@@ -10,14 +10,14 @@ echo "Deploying backend..."
 
 cd generated/backend
 
-railway link --project $PROJECT_ID
+railway link --project $PROJECT_ID --service vendure-backend
 
-railway up --service vendure-backend
+railway up
 
 echo "Deploying storefront..."
 
 cd ../storefront
 
-railway link --project $PROJECT_ID
+railway link --project $PROJECT_ID --service vendure-storefront
 
-railway up --service vendure-storefront
+railway up
