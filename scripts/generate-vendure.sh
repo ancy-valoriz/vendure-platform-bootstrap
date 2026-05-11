@@ -11,7 +11,6 @@ rm -rf backend
 echo "Creating Vendure backend..."
 
 npx @vendure/create@latest backend \
-  --template minimal \
   --db postgres \
   --no-git \
   --package-manager npm
