@@ -2,24 +2,31 @@
 
 set -e
 
+mkdir -p generated/vendure-app
+
 export COOKIE_SECRET=$(openssl rand -hex 32)
 
-export SUPERADMIN_USERNAME=admin
+export SUPERADMIN_USERNAME=superadmin
 
-export SUPERADMIN_PASSWORD=$(openssl rand -base64 16)
+export SUPERADMIN_PASSWORD=superadmin
 
-export DB_HOST=postgres.railway.internal
-export DB_PORT=5432
-export DB_NAME=railway
-export DB_USERNAME=postgres
-export DB_PASSWORD=password
+# Railway PostgreSQL variables
+export DB_HOST=${DB_HOST}
+export DB_PORT=${DB_PORT:-5432}
+export DB_NAME=${DB_NAME}
+export DB_USERNAME=${DB_USERNAME}
+export DB_PASSWORD=${DB_PASSWORD}
 
-export NEXT_PUBLIC_VENDURE_API_URL=https://backend.up.railway.app/shop-api
+# Backend URL
+export BACKEND_URL=${BACKEND_URL}
 
-export NEXT_PUBLIC_SHOP_API_URL=https://backend.up.railway.app/shop-api
+# Storefront variables
+export NEXT_PUBLIC_VENDURE_API_URL=${BACKEND_URL}/shop-api
+
+export NEXT_PUBLIC_SHOP_API_URL=${BACKEND_URL}/shop-api
 
 export NEXT_PUBLIC_VENDURE_TOKEN=testtoken
 
-envsubst < templates/backend.env.template > generated/backend/.env
+envsubst < templates/backend.env.template > generated/vendure-app/.env
 
-envsubst < templates/storefront.env.template > generated/storefront/.env
+echo "Environment file generated"

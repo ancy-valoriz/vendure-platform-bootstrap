@@ -2,19 +2,13 @@
 
 set -e
 
-BACKEND_REPO="my-vendure-backend"
-STOREFRONT_REPO="my-vendure-storefront"
+APP_REPO="my-vendure-app"
 
-echo "Creating backend repo..."
-
-curl -X POST https://api.github.com/user/repos \
--H "Authorization: token $GITHUB_TOKEN" \
--H "Accept: application/vnd.github+json" \
--d "{\"name\":\"$BACKEND_REPO\",\"private\":false}"
-
-echo "Creating storefront repo..."
+echo "Creating Vendure app repo..."
 
 curl -X POST https://api.github.com/user/repos \
 -H "Authorization: token $GITHUB_TOKEN" \
 -H "Accept: application/vnd.github+json" \
--d "{\"name\":\"$STOREFRONT_REPO\",\"private\":false}"
+-d "{\"name\":\"$APP_REPO\",\"private\":false}" || true
+
+echo "Repository ready"

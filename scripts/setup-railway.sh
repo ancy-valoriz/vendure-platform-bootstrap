@@ -13,7 +13,9 @@ ENVIRONMENT="production"
 echo "Deploying backend..."
 echo "Token length: ${#RAILWAY_TOKEN}"
 
-cd generated/backend
+cd generated/vendure-app
+
+cp Dockerfile.server Dockerfile
 
 railway up \
   --service vendure-backend \
@@ -23,10 +25,12 @@ railway up \
 
 echo "Deploying storefront..."
 
-cd ../storefront
+cp Dockerfile.storefront Dockerfile
 
 railway up \
   --service vendure-storefront \
   --project $PROJECT_ID \
   --environment $ENVIRONMENT \
   --detach
+
+echo "Railway deployment completed"
