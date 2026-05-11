@@ -10,10 +10,7 @@ rm -rf backend
 
 echo "Creating Vendure backend..."
 
-npx @vendure/create@latest backend \
-  --db postgres \
-  --no-git \
-  --package-manager npm
+printf "Quick Start\npostgres\nnpm\nno\n" | npx @vendure/create@latest backend
 
 cd backend
 
