@@ -6,25 +6,11 @@ export PATH="$HOME/.railway/bin:$PATH"
 
 export RAILWAY_TOKEN=$RAILWAY_TOKEN
 
+PROJECT_ID="637e48f7-b697-4fa3-84ec-fc3d89e5ddda"
+
 ENVIRONMENT="production"
 
 cd generated/vendure-app
-
-echo "Testing Railway CLI authentication..."
-
-echo "Token length: ${#RAILWAY_TOKEN}"
-
-railway whoami
-
-echo "Injecting backend database variables..."
-
-railway variables set \
-  DB_HOST=$DB_HOST \
-  DB_PORT=$DB_PORT \
-  DB_NAME=$DB_NAME \
-  DB_USERNAME=$DB_USERNAME \
-  DB_PASSWORD=$DB_PASSWORD \
-  --service vendure-backend
 
 echo "Deploying backend..."
 
@@ -32,6 +18,7 @@ cp Dockerfile.server Dockerfile
 
 railway up \
   --service vendure-backend \
+  --project $PROJECT_ID \
   --environment $ENVIRONMENT \
   --detach
 
@@ -39,22 +26,13 @@ echo "Waiting for backend deployment..."
 
 sleep 120
 
-BACKEND_URL=$(railway domain --service vendure-backend)
-
-echo "Backend URL: https://${BACKEND_URL}"
-
-echo "Injecting storefront variables..."
-
-railway variables set \
-  NEXT_PUBLIC_VENDURE_SHOP_API_URL="https://${BACKEND_URL}/shop-api" \
-  --service vendure-storefront
-
 echo "Deploying storefront..."
 
 cp Dockerfile.storefront Dockerfile
 
 railway up \
   --service vendure-storefront \
+  --project $PROJECT_ID \
   --environment $ENVIRONMENT \
   --detach
 
