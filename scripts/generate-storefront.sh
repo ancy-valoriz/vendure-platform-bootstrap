@@ -10,6 +10,10 @@ rm -rf storefront
 
 git -c credential.helper= clone https://github.com/vendure-ecommerce/storefront storefront
 
+cd storefront
+
+npm install next@^15.4.10
+
 cat > Dockerfile <<EOF
 FROM node:20
 
