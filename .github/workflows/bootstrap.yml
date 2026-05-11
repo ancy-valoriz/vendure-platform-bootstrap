@@ -12,7 +12,7 @@ jobs:
       GITHUB_USERNAME: ${{ secrets.GH_USERNAME }}
 
       RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
-      RAILWAY_API_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+      RAILWAY_API_TOKEN: ${{ secrets.RAILWAY_API_TOKEN }}
 
       RAILWAY_PROJECT_ID: ${{ secrets.RAILWAY_PROJECT_ID }}
 
