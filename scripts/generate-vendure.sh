@@ -6,11 +6,15 @@ mkdir -p generated
 
 cd generated
 
-echo "Cloning Vendure backend starter..."
-
 rm -rf backend
 
-git -c credential.helper= clone https://github.com/vendure-ecommerce/real-world-vendure backend
+echo "Creating Vendure backend..."
+
+npx @vendure/create@latest backend \
+  --template minimal \
+  --db postgres \
+  --no-git \
+  --package-manager npm
 
 cd backend
 
@@ -25,11 +29,14 @@ RUN npm install
 
 COPY . .
 
+ENV NODE_ENV=production
+ENV PORT=3000
+
 RUN npm run build
 
 EXPOSE 3000
 
-CMD ["npm", "run", "start"]
+CMD ["npm", "run", "start:server"]
 EOF
 
-echo "Backend Dockerfile created"
+echo "Backend created successfully"
