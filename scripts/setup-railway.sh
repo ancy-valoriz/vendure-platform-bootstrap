@@ -2,22 +2,27 @@
 
 set -e
 
+export PATH="$HOME/.railway/bin:$PATH"
+
 export RAILWAY_TOKEN=$RAILWAY_TOKEN
 
 PROJECT_ID="637e48f7-b697-4fa3-84ec-fc3d89e5ddda"
 
 echo "Deploying backend..."
 echo "Token length: ${#RAILWAY_TOKEN}"
+
 cd generated/backend
 
-railway link --project $PROJECT_ID --service vendure-backend
-
-railway up --detach
+railway up \
+  --service vendure-backend \
+  --project $PROJECT_ID \
+  --detach
 
 echo "Deploying storefront..."
 
 cd ../storefront
 
-railway link --project $PROJECT_ID --service vendure-storefront
-
-railway up --detach
+railway up \
+  --service vendure-storefront \
+  --project $PROJECT_ID \
+  --detach
