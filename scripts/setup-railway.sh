@@ -6,15 +6,9 @@ export PATH="$HOME/.railway/bin:$PATH"
 
 export RAILWAY_TOKEN=$RAILWAY_TOKEN
 
-PROJECT_ID="637e48f7-b697-4fa3-84ec-fc3d89e5ddda"
-
 ENVIRONMENT="production"
 
 cd generated/vendure-app
-
-echo "Linking Railway project..."
-
-railway link --project $PROJECT_ID
 
 echo "Creating PostgreSQL service..."
 
