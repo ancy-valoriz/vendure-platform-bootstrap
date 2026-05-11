@@ -17,13 +17,8 @@ export DB_NAME=${DB_NAME}
 export DB_USERNAME=${DB_USERNAME}
 export DB_PASSWORD=${DB_PASSWORD}
 
-# Backend URL
-export BACKEND_URL=${BACKEND_URL}
-
-# Storefront variables
-export NEXT_PUBLIC_VENDURE_API_URL=${BACKEND_URL}/shop-api
-
-export NEXT_PUBLIC_SHOP_API_URL=${BACKEND_URL}/shop-api
+# Storefront API URL
+export NEXT_PUBLIC_VENDURE_SHOP_API_URL=http://localhost:3000/shop-api
 
 export NEXT_PUBLIC_VENDURE_TOKEN=testtoken
 
