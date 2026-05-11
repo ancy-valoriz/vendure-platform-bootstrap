@@ -6,11 +6,11 @@ COPY . .
 
 RUN npm install --workspaces --include-workspace-root
 
-ENV NODE_ENV=production
-ENV PORT=3001
-ENV NEXT_PUBLIC_VENDURE_SHOP_API_URL=http://localhost:3000/shop-api
+ARG NEXT_PUBLIC_VENDURE_SHOP_API_URL
 
-RUN npm run build
+ENV NEXT_PUBLIC_VENDURE_SHOP_API_URL=$NEXT_PUBLIC_VENDURE_SHOP_API_URL
+
+RUN npm run build -w storefront
 
 EXPOSE 3001
 
