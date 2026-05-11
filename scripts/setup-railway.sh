@@ -10,6 +10,12 @@ ENVIRONMENT="production"
 
 cd generated/vendure-app
 
+echo "Testing Railway CLI authentication..."
+
+echo "Token length: ${#RAILWAY_TOKEN}"
+
+railway whoami
+
 echo "Injecting backend database variables..."
 
 railway variables set \
