@@ -10,28 +10,6 @@ ENVIRONMENT="production"
 
 cd generated/vendure-app
 
-echo "Creating PostgreSQL service..."
-
-railway add \
-  --database postgres \
-  --service vendure-postgres || true
-
-echo "Waiting for PostgreSQL provisioning..."
-
-sleep 30
-
-echo "Fetching PostgreSQL variables..."
-
-DB_HOST=$(railway variables --service vendure-postgres | grep PGHOST | cut -d '=' -f2)
-
-DB_PORT=$(railway variables --service vendure-postgres | grep PGPORT | cut -d '=' -f2)
-
-DB_NAME=$(railway variables --service vendure-postgres | grep PGDATABASE | cut -d '=' -f2)
-
-DB_USERNAME=$(railway variables --service vendure-postgres | grep PGUSER | cut -d '=' -f2)
-
-DB_PASSWORD=$(railway variables --service vendure-postgres | grep PGPASSWORD | cut -d '=' -f2)
-
 echo "Injecting backend database variables..."
 
 railway variables set \
