@@ -13,7 +13,11 @@ ENVIRONMENT="production"
 cd generated/vendure-app
 
 echo "Deploying backend..."
+echo "Current directory:"
+pwd
 
+echo "Files:"
+ls -la
 cp Dockerfile.server Dockerfile
 
 railway up \

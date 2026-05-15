@@ -2,7 +2,10 @@
 
 set -e
 
-mkdir -p generated/vendure-app
+if [ ! -d "generated/vendure-app" ]; then
+  echo "Vendure app not generated"
+  exit 1
+fi
 
 # -----------------------------
 # App Secrets

@@ -8,7 +8,7 @@ bash scripts/install-tools.sh
 
 # bash scripts/create-github-repos.sh
 
-# bash scripts/generate-vendure.sh
+bash scripts/generate-vendure.sh
 
 bash scripts/configure-env.sh
 
