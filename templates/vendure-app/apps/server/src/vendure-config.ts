@@ -47,6 +47,7 @@ export const config: VendureConfig = {
         migrations: [path.join(__dirname, './migrations/*.+(js|ts)')],
         logging: false,
         url: process.env.DATABASE_URL,
+        migrationsRun: true,
     },
     paymentOptions: {
         paymentMethodHandlers: [dummyPaymentHandler],
