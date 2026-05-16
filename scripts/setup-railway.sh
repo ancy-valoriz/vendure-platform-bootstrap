@@ -13,11 +13,18 @@ ENVIRONMENT="production"
 cd generated/vendure-app
 
 echo "Deploying backend..."
+
 echo "Current directory:"
 pwd
 
 echo "Files:"
 ls -la
+
+echo "========== Vendure Config =========="
+grep -n "DATABASE_URL" apps/server/src/vendure-config.ts || true
+grep -n "DB_HOST" apps/server/src/vendure-config.ts || true
+echo "===================================="
+
 cp Dockerfile.server Dockerfile
 
 railway up \
