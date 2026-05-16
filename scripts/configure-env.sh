@@ -13,7 +13,7 @@ fi
 
 export COOKIE_SECRET=$(openssl rand -hex 32)
 
-export SUPERADMIN_USERNAME=superadmin
+export SUPERADMIN_USERNAME=admin@vendure.io
 
 export SUPERADMIN_PASSWORD=superadmin
 
