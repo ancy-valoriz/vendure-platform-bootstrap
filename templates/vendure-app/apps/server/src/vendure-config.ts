@@ -30,15 +30,16 @@ export const config: VendureConfig = {
         } : {}),
     },
     authOptions: {
-        tokenMethod: ['bearer', 'cookie'],
-        superadminCredentials: {
-            identifier: process.env.SUPERADMIN_USERNAME,
-            password: process.env.SUPERADMIN_PASSWORD,
-        },
-        cookieOptions: {
-            keys: [process.env.COOKIE_SECRET!],
-        },
+    tokenMethod: ['bearer', 'cookie'],
+    superadminCredentials: {
+        identifier: process.env.SUPERADMIN_USERNAME!,
+        password: process.env.SUPERADMIN_PASSWORD!,
     },
+    cookieOptions: {
+        secret: process.env.COOKIE_SECRET!,
+        secure: false,
+    },
+},
     dbConnectionOptions: {
         type: 'postgres',
         // See the README.md "Migrations" section for an explanation of
