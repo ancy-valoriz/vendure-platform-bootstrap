@@ -17,7 +17,7 @@ terraform init
 terraform apply -auto-approve
 
 cd ..
-bash scripts/create-postgres.sh
+# bash scripts/create-postgres.sh
 bash scripts/configure-railway-db.sh
 
 bash scripts/setup-railway.sh
