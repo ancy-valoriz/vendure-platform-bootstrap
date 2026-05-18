@@ -9,7 +9,14 @@ RUN npm install --workspaces --include-workspace-root
 ENV NODE_ENV=production
 ENV PORT=3000
 
+# Build Vendure server
 RUN npm run build -w server
+
+# Build dashboard frontend
+WORKDIR /app/apps/server
+RUN npx vite build
+
+WORKDIR /app
 
 EXPOSE 3000
 
