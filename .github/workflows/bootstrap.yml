@@ -6,21 +6,44 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment: production
 
     env:
       GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
       GITHUB_USERNAME: ${{ secrets.GH_USERNAME }}
-      # DATABASE_URL: ${{ vars.DATABASE_URL }}
+
       RAILWAY_TOKEN: ${{ vars.RAILWAY_TOKEN }}
       RAILWAY_PROJECT_ID: ${{ vars.RAILWAY_PROJECT_ID }}
+
       SUPERADMIN_USERNAME: ${{ vars.SUPERADMIN_USERNAME }}
       SUPERADMIN_PASSWORD: ${{ vars.SUPERADMIN_PASSWORD }}
+
       APP_ENV: ${{ vars.APP_ENV }}
       NODE_ENV: ${{ vars.NODE_ENV }}
+
       NEXT_PUBLIC_VENDURE_TOKEN: ${{ vars.NEXT_PUBLIC_VENDURE_TOKEN }}
+
       COOKIE_SECRET: ${{ secrets.COOKIE_SECRET }}
+
     steps:
       - uses: actions/checkout@v4
+
+      - name: Debug Railway Variables
+        run: |
+          echo "PROJECT_ID=$RAILWAY_PROJECT_ID"
+
+          if [ -z "$RAILWAY_TOKEN" ]; then
+            echo "RAILWAY_TOKEN is EMPTY"
+            exit 1
+          fi
+
+          echo "RAILWAY_TOKEN exists"
+
+          TOKEN_LENGTH=${#RAILWAY_TOKEN}
+          echo "RAILWAY_TOKEN length: $TOKEN_LENGTH"
+
+          echo "RAILWAY_TOKEN preview: ${RAILWAY_TOKEN:0:6}******"
+
 
       - name: Make scripts executable
         run: chmod +x scripts/*.sh
