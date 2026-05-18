@@ -44,7 +44,6 @@ jobs:
 
           echo "RAILWAY_TOKEN preview: ${RAILWAY_TOKEN:0:6}******"
 
-
       - name: Make scripts executable
         run: chmod +x scripts/*.sh
 

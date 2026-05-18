@@ -3,10 +3,19 @@
 set -e
 
 export PATH="$HOME/.railway/bin:$PATH"
-export RAILWAY_TOKEN=$RAILWAY_TOKEN
+
+echo "Checking Railway token..."
+
+if [ -z "$RAILWAY_TOKEN" ]; then
+  echo "RAILWAY_TOKEN is EMPTY"
+  exit 1
+fi
+
+echo "RAILWAY_TOKEN detected"
+
 echo "Linking Railway project..."
 
-railway link --project $RAILWAY_PROJECT_ID
+railway link --project "$RAILWAY_PROJECT_ID"
 
 echo "Creating PostgreSQL service..."
 
