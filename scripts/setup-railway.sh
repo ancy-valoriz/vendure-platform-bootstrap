@@ -4,7 +4,6 @@ set -e
 
 export PATH="$HOME/.railway/bin:$PATH"
 
-export RAILWAY_TOKEN=$RAILWAY_TOKEN
 
 PROJECT_ID=$RAILWAY_PROJECT_ID
 
