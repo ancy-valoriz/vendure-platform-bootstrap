@@ -10,18 +10,15 @@ jobs:
     env:
       GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
       GITHUB_USERNAME: ${{ secrets.GH_USERNAME }}
-
-      RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
-      RAILWAY_API_TOKEN: ${{ secrets.RAILWAY_API_TOKEN }}
-
-      RAILWAY_PROJECT_ID: ${{ secrets.RAILWAY_PROJECT_ID }}
-
-      DB_HOST: ${{ secrets.DB_HOST }}
-      DB_PORT: ${{ secrets.DB_PORT }}
-      DB_NAME: ${{ secrets.DB_NAME }}
-      DB_USERNAME: ${{ secrets.DB_USERNAME }}
-      DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-
+    
+      RAILWAY_TOKEN: ${{ vars.RAILWAY_TOKEN }}
+      RAILWAY_PROJECT_ID: ${{ vars.RAILWAY_PROJECT_ID }}
+      SUPERADMIN_USERNAME: ${{ vars.SUPERADMIN_USERNAME }}
+      SUPERADMIN_PASSWORD: ${{ vars.SUPERADMIN_PASSWORD }}
+      APP_ENV: ${{ vars.APP_ENV }}
+      NODE_ENV: ${{ vars.NODE_ENV }}
+      NEXT_PUBLIC_VENDURE_TOKEN: ${{ vars.NEXT_PUBLIC_VENDURE_TOKEN }}
+      COOKIE_SECRET: ${{ secrets.COOKIE_SECRET }}
     steps:
       - uses: actions/checkout@v4
 
