@@ -6,7 +6,7 @@ export PATH="$HOME/.railway/bin:$PATH"
 
 echo "Linking Railway project..."
 
-railway link $RAILWAY_PROJECT_ID
+railway link --project $RAILWAY_PROJECT_ID
 
 echo "Creating PostgreSQL service..."
 
