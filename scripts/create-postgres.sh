@@ -3,7 +3,7 @@
 set -e
 
 export PATH="$HOME/.railway/bin:$PATH"
-
+export RAILWAY_TOKEN=$RAILWAY_TOKEN
 echo "Linking Railway project..."
 
 railway link --project $RAILWAY_PROJECT_ID
