@@ -4,12 +4,13 @@ set -e
 
 export PATH="$HOME/.railway/bin:$PATH"
 
-PROJECT_ID="$RAILWAY_PROJECT_ID"
+echo "Linking Railway project..."
+
+railway link $RAILWAY_PROJECT_ID
 
 echo "Creating PostgreSQL service..."
 
-railway deploy --template postgres \
-  --project $PROJECT_ID
+railway deploy --template postgres
 
 echo "Waiting for PostgreSQL provisioning..."
 
