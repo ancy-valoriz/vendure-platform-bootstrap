@@ -6,9 +6,9 @@ export PATH="$HOME/.railway/bin:$PATH"
 
 export RAILWAY_TOKEN=$RAILWAY_TOKEN
 
-PROJECT_ID="637e48f7-b697-4fa3-84ec-fc3d89e5ddda"
+PROJECT_ID=$RAILWAY_PROJECT_ID
 
-ENVIRONMENT="production"
+ENVIRONMENT=$APP_ENV
 
 cd generated/vendure-app
 

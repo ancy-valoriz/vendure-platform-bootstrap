@@ -10,7 +10,7 @@ jobs:
     env:
       GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
       GITHUB_USERNAME: ${{ secrets.GH_USERNAME }}
-    
+      DATABASE_URL: ${{ vars.DATABASE_URL }}
       RAILWAY_TOKEN: ${{ vars.RAILWAY_TOKEN }}
       RAILWAY_PROJECT_ID: ${{ vars.RAILWAY_PROJECT_ID }}
       SUPERADMIN_USERNAME: ${{ vars.SUPERADMIN_USERNAME }}
