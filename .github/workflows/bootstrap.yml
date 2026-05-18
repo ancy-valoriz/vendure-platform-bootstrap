@@ -11,8 +11,7 @@ jobs:
     env:
       GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
       GITHUB_USERNAME: ${{ secrets.GH_USERNAME }}
-
-      RAILWAY_TOKEN: ${{ vars.RAILWAY_TOKEN }}
+      RAILWAY_API_TOKEN: "bcfe5297-ce18-458c-9978-0156f672ab3d"
       RAILWAY_PROJECT_ID: ${{ vars.RAILWAY_PROJECT_ID }}
 
       SUPERADMIN_USERNAME: ${{ vars.SUPERADMIN_USERNAME }}
@@ -32,17 +31,17 @@ jobs:
         run: |
           echo "PROJECT_ID=$RAILWAY_PROJECT_ID"
 
-          if [ -z "$RAILWAY_TOKEN" ]; then
-            echo "RAILWAY_TOKEN is EMPTY"
+          if [ -z "$RAILWAY_API_TOKEN" ]; then
+            echo "RAILWAY_API_TOKEN is EMPTY"
             exit 1
           fi
 
-          echo "RAILWAY_TOKEN exists"
+          echo "RAILWAY_API_TOKEN exists"
 
-          TOKEN_LENGTH=${#RAILWAY_TOKEN}
-          echo "RAILWAY_TOKEN length: $TOKEN_LENGTH"
+          TOKEN_LENGTH=${#RAILWAY_API_TOKEN}
+          echo "RAILWAY_API_TOKEN length: $TOKEN_LENGTH"
 
-          echo "RAILWAY_TOKEN preview: ${RAILWAY_TOKEN:0:6}******"
+          echo "RAILWAY_API_TOKEN preview: ${RAILWAY_API_TOKEN:0:6}******"
 
       - name: Make scripts executable
         run: chmod +x scripts/*.sh

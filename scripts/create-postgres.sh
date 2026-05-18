@@ -6,12 +6,12 @@ export PATH="$HOME/.railway/bin:$PATH"
 
 echo "Checking Railway token..."
 
-if [ -z "$RAILWAY_TOKEN" ]; then
-  echo "RAILWAY_TOKEN is EMPTY"
+if [ -z "$RAILWAY_API_TOKEN" ]; then
+  echo "RAILWAY_API_TOKEN is EMPTY"
   exit 1
 fi
 
-echo "RAILWAY_TOKEN detected"
+echo "RAILWAY_API_TOKEN detected"
 
 echo "Linking Railway project..."
 
