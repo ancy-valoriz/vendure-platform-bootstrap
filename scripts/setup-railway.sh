@@ -45,13 +45,15 @@ BACKEND_DOMAIN=$(railway domain | grep -o 'https://[^ ]*')
 
 echo "Backend domain: $BACKEND_DOMAIN"
 
-export NEXT_PUBLIC_VENDURE_SHOP_API_URL="https://$BACKEND_DOMAIN/shop-api"
+export NEXT_PUBLIC_VENDURE_SHOP_API_URL="$BACKEND_DOMAIN/shop-api"
 
 echo "Shop API URL: $NEXT_PUBLIC_VENDURE_SHOP_API_URL"
 
 echo "Regenerating .env with production API URL..."
 
 envsubst < ../../templates/backend.env.template > .env
+
+cp .env apps/storefront/.env
 
 echo "Deploying storefront..."
 
