@@ -14,15 +14,11 @@ railway link \
   --environment "$ENVIRONMENT" \
   --service vendure-backend
 
-echo "Creating volume..."
+echo "Creating and attaching volume..."
 
-railway volume create vendure-assets || true
-
-echo "Mounting volume..."
-
-railway volume mount \
-  vendure-assets \
+railway volume add \
   --service vendure-backend \
-  --path /vendure-assets
+  --mount-path /vendure-assets \
+  --json || true
 
 echo "Volume configured successfully"
