@@ -61,6 +61,7 @@ railway up \
   --service vendure-storefront \
   --project $PROJECT_ID \
   --environment $ENVIRONMENT \
+  --build-arg NEXT_PUBLIC_VENDURE_SHOP_API_URL=$NEXT_PUBLIC_VENDURE_SHOP_API_URL \
   --detach
 
 echo "Railway deployment completed"
