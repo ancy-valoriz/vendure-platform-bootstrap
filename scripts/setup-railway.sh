@@ -49,6 +49,22 @@ export NEXT_PUBLIC_VENDURE_SHOP_API_URL="$BACKEND_DOMAIN/shop-api"
 
 echo "Shop API URL: $NEXT_PUBLIC_VENDURE_SHOP_API_URL"
 
+echo "Injecting storefront variables into Railway..."
+
+railway link \
+  --project "$PROJECT_ID" \
+  --environment "$ENVIRONMENT" \
+  --service vendure-storefront
+
+STOREFRONT_DOMAIN=$(railway domain | grep -o 'https://[^ ]*')
+
+echo "Storefront domain: $STOREFRONT_DOMAIN"
+
+railway variables set \
+  NEXT_PUBLIC_VENDURE_SHOP_API_URL="$NEXT_PUBLIC_VENDURE_SHOP_API_URL" \
+  VENDURE_SHOP_API_URL="$NEXT_PUBLIC_VENDURE_SHOP_API_URL" \
+  NEXT_PUBLIC_SITE_URL="$STOREFRONT_DOMAIN"
+
 echo "Regenerating .env with production API URL..."
 echo "========== GENERATED ENV VALUES =========="
 echo "NEXT_PUBLIC_VENDURE_SHOP_API_URL=$NEXT_PUBLIC_VENDURE_SHOP_API_URL"
