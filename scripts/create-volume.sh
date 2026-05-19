@@ -17,7 +17,6 @@ railway link \
 echo "Creating and attaching volume..."
 
 railway volume add \
-  --service vendure-backend \
   --mount-path /vendure-assets \
   --json || true
 
