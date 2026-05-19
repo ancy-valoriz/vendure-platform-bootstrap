@@ -12,6 +12,6 @@ ENV NEXT_PUBLIC_VENDURE_SHOP_API_URL=$NEXT_PUBLIC_VENDURE_SHOP_API_URL
 
 RUN npm run build -w storefront
 
-EXPOSE 3001
+EXPOSE 8080
 
 CMD ["npm", "run", "start:storefront"]
