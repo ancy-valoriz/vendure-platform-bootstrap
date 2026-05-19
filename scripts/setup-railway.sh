@@ -32,7 +32,7 @@ railway up \
 
 echo "Waiting for backend deployment..."
 
-sleep 120
+sleep 180
 
 echo "Fetching backend domain..."
 
@@ -50,10 +50,17 @@ export NEXT_PUBLIC_VENDURE_SHOP_API_URL="$BACKEND_DOMAIN/shop-api"
 echo "Shop API URL: $NEXT_PUBLIC_VENDURE_SHOP_API_URL"
 
 echo "Regenerating .env with production API URL..."
+echo "========== GENERATED ENV VALUES =========="
+echo "NEXT_PUBLIC_VENDURE_SHOP_API_URL=$NEXT_PUBLIC_VENDURE_SHOP_API_URL"
+echo "========================================="
 
 envsubst < ../../templates/backend.env.template > .env
 
 cp .env apps/storefront/.env
+
+echo "========== GENERATED .ENV =========="
+cat .env
+echo "===================================="
 
 echo "Deploying storefront..."
 
