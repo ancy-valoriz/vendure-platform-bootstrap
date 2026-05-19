@@ -4,9 +4,7 @@ set -e
 
 export PATH="$HOME/.railway/bin:$PATH"
 
-
 PROJECT_ID=$RAILWAY_PROJECT_ID
-
 ENVIRONMENT=$APP_ENV
 
 cd generated/vendure-app
@@ -35,6 +33,25 @@ railway up \
 echo "Waiting for backend deployment..."
 
 sleep 120
+
+echo "Fetching backend domain..."
+
+railway link \
+  --project "$PROJECT_ID" \
+  --environment "$ENVIRONMENT" \
+  --service vendure-backend
+
+BACKEND_DOMAIN=$(railway domain)
+
+echo "Backend domain: $BACKEND_DOMAIN"
+
+export NEXT_PUBLIC_VENDURE_SHOP_API_URL="https://$BACKEND_DOMAIN/shop-api"
+
+echo "Shop API URL: $NEXT_PUBLIC_VENDURE_SHOP_API_URL"
+
+echo "Regenerating .env with production API URL..."
+
+envsubst < ../../templates/backend.env.template > .env
 
 echo "Deploying storefront..."
 

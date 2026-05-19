@@ -7,10 +7,8 @@ if [ ! -d "generated/vendure-app" ]; then
   exit 1
 fi
 
-if [ -z "$NEXT_PUBLIC_VENDURE_SHOP_API_URL" ]; then
-  echo "NEXT_PUBLIC_VENDURE_SHOP_API_URL is not set"
-  exit 1
-fi
+# Temporary fallback until backend URL is generated after deployment
+export NEXT_PUBLIC_VENDURE_SHOP_API_URL=${NEXT_PUBLIC_VENDURE_SHOP_API_URL:-http://localhost:3000/shop-api}
 
 # Generate .env from template using GitHub Actions env variables
 envsubst < templates/backend.env.template > generated/vendure-app/.env
