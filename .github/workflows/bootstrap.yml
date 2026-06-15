@@ -11,7 +11,7 @@ jobs:
     env:
       GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
       GITHUB_USERNAME: ${{ secrets.GH_USERNAME }}
-      RAILWAY_API_TOKEN: "bcfe5297-ce18-458c-9978-0156f672ab3d"
+      # RAILWAY_API_TOKEN: "bcfe5297-ce18-458c-9978-0156f672ab3d"
       RAILWAY_PROJECT_ID: ${{ vars.RAILWAY_PROJECT_ID }}
 
       SUPERADMIN_USERNAME: ${{ vars.SUPERADMIN_USERNAME }}
